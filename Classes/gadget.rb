@@ -1,6 +1,7 @@
 # use the class keyword and use CamelCase for class names, and follow it by end
 
-# Getter methods allow you to expose properties to outside of the class
+# Setter methods allow you to expose properties to outside of the class
+#    for editing them
 
 class Gadget
   def initialize
@@ -16,16 +17,34 @@ class Gadget
     val
   end
 
-  # Getters
+  # Getters and Setters
   def username
     @username
   end
+
+  # Setter (best practice is to close the method name with an =)
+  def username=(new_username)
+    @username = new_username
+  end
+
   def production_number
     @production_number
+  end
+
+  # Setter (best practice is to close the method name with an =)
+  def password=(password)
+    @password = password
   end
 
 end
 
 phone = Gadget.new
-p phone.username
 p phone.production_number
+
+p phone.username
+phone.username=("pdennis")
+p phone.username
+
+phone.password=("very_secure")
+# we can also use the regular syntax
+p phone.password = "really really secure"
