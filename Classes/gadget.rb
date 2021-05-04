@@ -1,6 +1,7 @@
 # use the class keyword and use CamelCase for class names, and follow it by end
 
-# Method overriding
+# The self keyword in an instance method.  It will refer to its parent object's
+#   instance
 
 class Gadget
   def initialize
@@ -11,9 +12,13 @@ class Gadget
 
   # instance method, overriding the to_s method from the Object class
   def to_s
-    "Gadget #{@production_number} has the username #{@username}"
+    val = "Gadget #{@production_number} has the username #{@username}. \n"
+    val += "It is made from the #{self.class} class and it has the ID #{self.object_id}"
+    val
   end
 end
 
 phone = Gadget.new
-p phone.to_s
+puts phone.to_s
+laptop = Gadget.new
+puts laptop.to_s
