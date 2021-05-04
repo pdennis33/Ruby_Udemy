@@ -1,19 +1,16 @@
 # use the class keyword and use CamelCase for class names, and follow it by end
 
-# Better way to write Getters and Setters, called Accessor methods
-#  One way is to use attr_accessor, attr_reader, or attr_writer
+# Using parameters with the initialize method
 
 class Gadget
 
   attr_accessor :username # read and write access
   attr_reader :production_number # read only
   attr_writer :password # write only
-  # we can also set multiple variables on one line,
-  #    such as attr_writer :password, :username
 
-  def initialize
-    @username = "User #{rand(1..100)}"
-    @password = "topsecret"
+  def initialize(username, password)
+    @username = username
+    @password = password
     @production_number = "#{("a".."z").to_a.sample}-#{rand(1..999)}"
   end
 
@@ -26,11 +23,13 @@ class Gadget
 
 end
 
-phone = Gadget.new
-p phone.production_number
+g1 = Gadget.new("rubyfan201", "prog123")
+g2 = Gadget.new("mrprogrammer", "greatpassword")
+g3 = Gadget.new("pdennis", "secure!")
 
-p phone.username
-phone.username = "pdennis"
-p phone.username
-# we can also use the regular syntax
-p phone.password = "really really secure"
+puts g1.to_s
+puts g2.to_s
+puts g3.to_s
+
+g2.username = "mrsProgrammer"
+puts g2.to_s
