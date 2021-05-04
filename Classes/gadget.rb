@@ -1,7 +1,6 @@
 # use the class keyword and use CamelCase for class names, and follow it by end
 
-# The self keyword in an instance method.  It will refer to its parent object's
-#   instance
+# Getter methods allow you to expose properties to outside of the class
 
 class Gadget
   def initialize
@@ -16,9 +15,17 @@ class Gadget
     val += "It is made from the #{self.class} class and it has the ID #{self.object_id}"
     val
   end
+
+  # Getters
+  def username
+    @username
+  end
+  def production_number
+    @production_number
+  end
+
 end
 
 phone = Gadget.new
-puts phone.to_s
-laptop = Gadget.new
-puts laptop.to_s
+p phone.username
+p phone.production_number
