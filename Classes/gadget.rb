@@ -1,7 +1,3 @@
-# use the class keyword and use CamelCase for class names, and follow it by end
-
-# Using parameters with the initialize method
-
 class Gadget
 
   attr_accessor :username # read and write access
@@ -11,25 +7,27 @@ class Gadget
   def initialize(username, password)
     @username = username
     @password = password
-    @production_number = "#{("a".."z").to_a.sample}-#{rand(1..999)}"
+    @production_number = generate_production_number
   end
 
   # instance method, overriding the to_s method from the Object class
   def to_s
-    val = "Gadget #{@production_number} has the username #{@username}. \n"
-    val += "It is made from the #{self.class} class and it has the ID #{self.object_id}"
-    val
+    "Gadget #{@production_number} has the username #{@username}.
+    It is made from the #{self.class} class and it
+    has the ID #{self.object_id}"
   end
 
+  private
+
+  def generate_production_number
+    start_digits = rand(10000..99999)
+    end_digits = rand(10000..99999)
+    alphabet = ("A".."Z").to_a
+    middle_digits = "2021"
+    5.times { middle_digits << alphabet.sample }
+    "#{start_digits}-#{middle_digits}-#{end_digits}"
+  end
 end
 
-g1 = Gadget.new("rubyfan201", "prog123")
-g2 = Gadget.new("mrprogrammer", "greatpassword")
-g3 = Gadget.new("pdennis", "secure!")
-
-puts g1.to_s
-puts g2.to_s
-puts g3.to_s
-
-g2.username = "mrsProgrammer"
-puts g2.to_s
+phone = Gadget.new("pdennis", "pass")
+puts phone.to_s
