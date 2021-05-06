@@ -1,7 +1,11 @@
+require_relative 'app_store'
+
 class Gadget
 
+  include AppStore
+
   attr_accessor :username # read and write access
-  attr_reader :production_number # read only
+  attr_reader :production_number, :apps # read only
 
   def initialize(username, password)
     @username = username
@@ -27,6 +31,20 @@ class Gadget
     self.apps = []
   end
 
+  # def open_app(app_name)
+  #   AppStore.find_app(app_name.to_sym) ? "Opening #{app_name}" : "No app with the name #{app_name}"
+  # end
+
+  def install_app(name)
+    app = AppStore.find_app(name)
+    self.apps << app unless app.nil? || self.apps.include?(app)
+  end
+
+  def uninstall_app(name)
+    app = self.apps.find { |installed_app| installed_app.name == name }
+    self.apps.delete(app) unless app.nil?
+  end
+
   private
 
   attr_writer :apps
@@ -45,6 +63,22 @@ class Gadget
   end
 end
 
+puts AppStore::APPS
 phone = Gadget.new("pdennis", "password123")
 p phone.to_s
-phone.reset("paul", "dennis")
+p phone.apps
+phone.install_app(:Chat)
+p phone.apps
+puts
+phone.install_app(:Chat)
+p phone.apps
+puts
+phone.install_app(:Chattttty)
+p phone.apps
+puts
+phone.install_app(:Weather)
+p phone.apps
+puts
+phone.uninstall_app(:Weather)
+p phone.apps
+puts
