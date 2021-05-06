@@ -12,9 +12,9 @@ class Gadget
 
   # instance method, overriding the to_s method from the Object class
   def to_s
-    "Gadget #{production_number} has the username #{username}.
+    "Gadget #{@production_number} has the username #{@username}.
     It is made from the #{self.class} class and it
-    has the ID #{object_id}"
+    has the ID #{self.object_id}"
   end
 
   def password=(new_password)
@@ -39,7 +39,6 @@ end
 
 phone = Gadget.new("pdennis", "pass")
 puts phone.production_number
-puts phone.to_s
 # puts phone.password
 
 phone.password = 123
