@@ -14,19 +14,26 @@ class Employee
 end
 
 class Manager < Employee
+  def yell
+    "Who's the boss? I'm the boss!"
+  end
 end
 
 class Worker < Employee
-end
+  def clock_in(time)
+    "Starting my shift at #{time}"
+  end
 
-p Manager.ancestors
-p Worker.ancestors
-puts
+  def yell
+    "I'm working! I'm working!"
+  end
+end
 
 bob = Manager.new("Bob", 48)
 dan = Worker.new("Dan", 36)
 
-p bob.is_a?(Manager)
-p dan.is_a?(Employee)
-p dan.instance_of?(Worker)
-p dan.instance_of?(Employee)
+p bob.introduce
+p dan.introduce
+p bob.yell
+p dan.yell
+p dan.clock_in("8:30AM")
