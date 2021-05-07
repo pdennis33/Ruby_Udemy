@@ -19,15 +19,14 @@ end
 class Worker < Employee
 end
 
+p Manager.ancestors
+p Worker.ancestors
+puts
 
 bob = Manager.new("Bob", 48)
-p bob.introduce
 dan = Worker.new("Dan", 36)
-p dan.introduce
 
-p bob.name
-
-p bob.class
-p dan.class
-p bob.class.ancestors
-p dan.class.ancestors
+p bob.is_a?(Manager)
+p dan.is_a?(Employee)
+p dan.instance_of?(Worker)
+p dan.instance_of?(Employee)
