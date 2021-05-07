@@ -14,6 +14,10 @@ class Employee
 end
 
 class Manager < Employee
+  def introduce
+    "Hi there, my name is #{name} and I'm your new manager."
+  end
+
   def yell
     "Who's the boss? I'm the boss!"
   end
