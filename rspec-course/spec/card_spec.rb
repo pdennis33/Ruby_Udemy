@@ -4,3 +4,11 @@ RSpec.describe 'Card' do
     expect(card.type).to eq('Ace of Spades')
   end
 end
+
+class Card
+  attr_reader :type
+
+  def initialize(type)
+    @type = type
+  end
+end
