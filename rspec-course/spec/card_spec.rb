@@ -1,8 +1,9 @@
 class Card
-  attr_reader :type
+  attr_reader :suit, :rank
 
-  def initialize(type)
-    @type = type
+  def initialize(rank, suit)
+    @suit = suit
+    @rank = rank
   end
 end
 
